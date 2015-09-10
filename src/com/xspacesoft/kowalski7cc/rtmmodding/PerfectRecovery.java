@@ -1,5 +1,7 @@
 package com.xspacesoft.kowalski7cc.rtmmodding;
 
+import it.sauronsoftware.ftp4j.FTPClient;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -40,11 +42,11 @@ public class PerfectRecovery extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(RtmDialog rtm) {
+	public static void main(RtmDialog rtm, FTPClient ftp) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PerfectRecovery frame = new PerfectRecovery(rtm);
+					PerfectRecovery frame = new PerfectRecovery(rtm, ftp);
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -54,7 +56,7 @@ public class PerfectRecovery extends JFrame {
 		});
 	}
 
-	public PerfectRecovery(RtmDialog rtm) {
+	public PerfectRecovery(RtmDialog rtm, FTPClient ftp) {
 		this.rtm = rtm;
 		setTitle(Messages.getString("PerfectRecovery.Title"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,6 +70,7 @@ public class PerfectRecovery extends JFrame {
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
 		JButton btnRun = new JButton(Messages.getString("PerfectRecovery.Run")); //$NON-NLS-1$
+		btnRun.setEnabled(ftp.isConnected());
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				installCustomization();

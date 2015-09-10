@@ -5,6 +5,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import us.monoid.web.Resty;
 
 public class RebootAlert extends JFrame {
 
@@ -64,14 +65,23 @@ public class RebootAlert extends JFrame {
 		contentPane.add(lblYouAreGoing);
 		
 		JButton btnYes = new JButton(Messages.getString("Window.Yes"));
+		if(address == null)
+			btnYes.setEnabled(false);
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					new Resty().json("http://" + address + "/restart.ps3");
+					HttpURLConnection req = (HttpURLConnection)
+							new URL("http://" + address + "/restart.ps3").openConnection();
+					req.setRequestMethod("GET");
+					req.connect();
+					InputStream stream = req.getInputStream();
+					while(stream.available()>0) {
+						stream.read();
+					}
+					req.disconnect();
 					setVisible(false);
 				} catch (IOException e1) {
 					// WebMan not available?
-//					e1.printStackTrace();
 				}
 			}
 		});

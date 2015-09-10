@@ -129,6 +129,12 @@ public class ConnectionDialog extends JFrame {
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblConnectError.setVisible(false);
+				if(txtConsoleaddress.getText().isEmpty()) {
+					return;
+				} else if(txtConsoleaddress.getText().equals("HiddenTest")) {
+					RtmDialog.show(new FTPClient());
+					setVisible(false);
+				}
 				try {
 					FTPClient ftp = new FTPClient();
 					ftp.connect(txtConsoleaddress.getText());

@@ -182,22 +182,18 @@ public class RtmDialog extends JFrame {
 		panel_1.add(btnAllStock, gbc_btnAllStock);
 
 		JButton btnReboot = new JButton(Messages.getString("RebootAlert.Title"));
-		if(!ftp.isConnected())
-			btnReboot.setEnabled(false);
 		btnReboot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RebootAlert.show(ftp.getHost());
+				RebootAlert.show(ftp.isConnected()?ftp.getHost():null);
 			}
 		});
 		
 		JButton btnPerfectRecovery = new JButton(Messages.getString("PerfectRecovery.Title"));
 		btnPerfectRecovery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PerfectRecovery.main(RtmDialog.this);
+				PerfectRecovery.main(RtmDialog.this, ftp);
 			}
 		});
-		if(!Costants.DEBUG)
-			btnPerfectRecovery.setEnabled(false);
 		GridBagConstraints gbc_btnPerfectRecovery = new GridBagConstraints();
 		gbc_btnPerfectRecovery.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnPerfectRecovery.insets = new Insets(0, 0, 5, 0);
