@@ -145,9 +145,9 @@ public class RtmDialog extends JFrame {
 		contentPane.add(panel_1, BorderLayout.EAST);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] {10, 0};
-		gbl_panel_1.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 
 		btnInstall = new JButton(Messages.getString("RtmDialog.Install"));
@@ -207,18 +207,27 @@ public class RtmDialog extends JFrame {
 				RemoveSingstar.show(ftp);
 			}
 		});
+		
+		JButton btnPsnComment = new JButton(Messages.getString("RtmDialog.PsnComment")); //$NON-NLS-1$
+		btnPsnComment.setEnabled(false);
+		GridBagConstraints gbc_btnPsnComment = new GridBagConstraints();
+		gbc_btnPsnComment.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnPsnComment.insets = new Insets(0, 0, 5, 0);
+		gbc_btnPsnComment.gridx = 0;
+		gbc_btnPsnComment.gridy = 3;
+		panel_1.add(btnPsnComment, gbc_btnPsnComment);
 		GridBagConstraints gbc_btnSingstar = new GridBagConstraints();
 		gbc_btnSingstar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnSingstar.insets = new Insets(0, 0, 5, 0);
 		gbc_btnSingstar.gridx = 0;
-		gbc_btnSingstar.gridy = 3;
+		gbc_btnSingstar.gridy = 4;
 		panel_1.add(btnSingstar, gbc_btnSingstar);
 		GridBagConstraints gbc_btnReboot = new GridBagConstraints();
 		gbc_btnReboot.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnReboot.insets = new Insets(0, 0, 5, 0);
 		gbc_btnReboot.anchor = GridBagConstraints.NORTH;
 		gbc_btnReboot.gridx = 0;
-		gbc_btnReboot.gridy = 4;
+		gbc_btnReboot.gridy = 5;
 		panel_1.add(btnReboot, gbc_btnReboot);
 
 		JButton btnDisconnect = new JButton(
@@ -241,7 +250,7 @@ public class RtmDialog extends JFrame {
 		gbc_btnDisconnect.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnDisconnect.anchor = GridBagConstraints.NORTH;
 		gbc_btnDisconnect.gridx = 0;
-		gbc_btnDisconnect.gridy = 5;
+		gbc_btnDisconnect.gridy = 6;
 		panel_1.add(btnDisconnect, gbc_btnDisconnect);
 
 		JButton btnAbout = new JButton(Messages.getString("About.Title"));
@@ -253,7 +262,7 @@ public class RtmDialog extends JFrame {
 		GridBagConstraints gbc_btnAbout = new GridBagConstraints();
 		gbc_btnAbout.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAbout.gridx = 0;
-		gbc_btnAbout.gridy = 6;
+		gbc_btnAbout.gridy = 7;
 		panel_1.add(btnAbout, gbc_btnAbout);
 		
 		if(Costants.MODS_SUPPORTED.length>0) {

@@ -49,9 +49,9 @@ public class About extends JFrame {
 	 */
 	public About() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(About.class.getResource("/com/xspacesoft/kowalski7cc/rtmmodding/resources/LogoXSS_512.png"))); //$NON-NLS-1$
-		setTitle(Messages.getString("About.Title"));
+		setTitle(Messages.getString("About.Title") + " - " + Costants.APPLICATION_NAME);
 		setResizable(false);
-		setBounds(100, 100, 383, 233);
+		setBounds(100, 100, 401, 233);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,7 +59,7 @@ public class About extends JFrame {
 		
 		JLabel logo = new JLabel("");
 		logo.setIcon(new ImageIcon(About.class.getResource("/com/xspacesoft/kowalski7cc/rtmmodding/resources/Title_347x100.png")));
-		logo.setBounds(10, 11, 355, 109);
+		logo.setBounds(10, 11, 375, 109);
 		contentPane.add(logo);
 		
 		JButton btnVisitOurSite = new JButton(Messages.getString("About.Site"));
@@ -75,7 +75,7 @@ public class About extends JFrame {
 				}
 			}
 		});
-		btnVisitOurSite.setBounds(8, 170, 258, 23);
+		btnVisitOurSite.setBounds(8, 170, 179, 23);
 		contentPane.add(btnVisitOurSite);
 		
 		JButton btnClose = new JButton(Messages.getString("About.Close"));
@@ -84,7 +84,7 @@ public class About extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnClose.setBounds(276, 170, 89, 23);
+		btnClose.setBounds(296, 170, 89, 23);
 		contentPane.add(btnClose);
 		
 		JLabel lblDevelopedByKowalskicc = new JLabel(Messages.getString("About.Description") + " Kowalski7cc");
@@ -97,6 +97,15 @@ public class About extends JFrame {
 		lblInternalPreview.setForeground(Color.ORANGE);
 		lblInternalPreview.setBounds(10, 145, 355, 14);
 		contentPane.add(lblInternalPreview);
+		
+		JButton btnEula = new JButton(Messages.getString("About.btnEula.text")); //$NON-NLS-1$
+		btnEula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Eula.start();
+			}
+		});
+		btnEula.setBounds(197, 170, 89, 23);
+		contentPane.add(btnEula);
 	}
 	
 	public static void openWebpage(URI uri) {

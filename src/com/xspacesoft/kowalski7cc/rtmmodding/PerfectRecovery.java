@@ -58,8 +58,7 @@ public class PerfectRecovery extends JFrame {
 
 	public PerfectRecovery(RtmDialog rtm, FTPClient ftp) {
 		this.rtm = rtm;
-		setTitle(Messages.getString("PerfectRecovery.Title"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle(Messages.getString("PerfectRecovery.Title") + " - " + Costants.APPLICATION_NAME);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -59,7 +59,7 @@ public class RemoveSingstar extends JFrame {
 	 */
 	public RemoveSingstar(FTPClient ftp) {
 		this.ftp=ftp;
-		setTitle(Messages.getString("RemoveSingstar.Title"));
+		setTitle(Messages.getString("RemoveSingstar.Title") + " - " + Costants.APPLICATION_NAME);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				ConnectionDialog.class.getResource(
 						"/com/xspacesoft/kowalski7cc/rtmmodding/resources/" + Utils.getIconSystem() + ".png")));  //$NON-NLS-1$
