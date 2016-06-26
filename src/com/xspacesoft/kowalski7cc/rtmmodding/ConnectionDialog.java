@@ -59,11 +59,14 @@ public class ConnectionDialog extends JFrame {
 	}
 
 	private static void chackIntegrity() {
-		File file = new File("data");
+		System.out.println("Checking data folder");
+		File file = new File(new File(System.getProperty("user.home")), "PS3 Customization");
 		if(!file.exists()) {
 			System.out.println(Messages.getString("ConnectionDialog.MissingFolderError")); //$NON-NLS-1$
 			if(!file.mkdir())
 				System.exit(1);
+		} else {
+			System.out.println("Data folder found");
 		}
 	}
 
@@ -179,6 +182,7 @@ public class ConnectionDialog extends JFrame {
 			}
 		});
 		panel.add(btnCancel);
+		System.out.println("Connection dialog loaded");
 	}
 
 	protected JTextField getTxtConsoleaddress() {

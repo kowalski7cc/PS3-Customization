@@ -4,6 +4,24 @@
 	<groupId>PS3-Customization</groupId>
 	<artifactId>PS3-Customization</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<repositories>
+		<repository>
+			<id>github-asbachb-releases</id>
+			<url>https://raw.github.com/asbachb/mvn-repo/master/releases</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>com.github.asbachb</groupId>
+			<artifactId>ftp4j</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>us.monoid.web</groupId>
+			<artifactId>resty</artifactId>
+			<version>0.3.2</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
@@ -18,7 +36,7 @@
 			<!-- Build with Java 7 -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.5</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
@@ -57,7 +75,7 @@
 								<!-- add Main-Class to manifest file -->
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.xspacesoft.kowalski7cc.rtmmodding.Splash</mainClass>
+									<mainClass>com.xspacesoft.kowalski7cc.rtmmodding.ConnectionDialog</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
@@ -80,22 +98,17 @@
 						<configuration>
 							<headerType>gui</headerType>
 							<jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
-							<outfile>${project.build.directory}/${project.artifactId}-${project.version}.exe</outfile>
+							<outfile>${project.build.directory}/${project.artifactId}.exe</outfile>
 							<downloadUrl>http://java.com/download</downloadUrl>
-							<stayAlive>true|false</stayAlive>
+							<stayAlive>true</stayAlive>
 							<classPath>
-								<mainClass>com.xspacesoft.kowax.Main</mainClass>
+								<mainClass>com.xspacesoft.kowalski7cc.rtmmodding.Splash</mainClass>
 								<preCp>anything</preCp>
 							</classPath>
-							<singleInstance>
-								<mutexName>text</mutexName>
-								<windowTitle>text</windowTitle>
-							</singleInstance>
-							<icon>${basedir}/src/com/xspacesoft/kowalski7cc/rtmmodding/resources/9icon.ico</icon>
+							<icon>${basedir}/src/com/xspacesoft/kowalski7cc/rtmmodding/resources/icon.ico</icon>
 							<jre>
 								<minVersion>1.7.0</minVersion>
 								<jdkPreference>preferJre</jdkPreference>
-								<runtimeBits>64/32</runtimeBits>
 							</jre>
 							<!-- Exe Metadata -->
 							<versionInfo>
@@ -108,7 +121,7 @@
 								<productName>${project.name}</productName>
 								<companyName>xspacesoft.com</companyName>
 								<internalName>XSpaceSoft Informatics</internalName>
-								<originalFilename>${project.artifactId}-${project.version}.exe</originalFilename>
+								<originalFilename>${project.artifactId}.exe</originalFilename>
 							</versionInfo>
 						</configuration>
 					</execution>

@@ -39,11 +39,6 @@ public class Splash extends JWindow {
 			}
 		});
 		frame.fadeIn();
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// IDGAF
-		}
 		ConnectionDialog.main(args);
 		frame.fadeOut();
 	}
