@@ -85,7 +85,7 @@ public class ConnectionDialog extends JFrame {
 		setResizable(false);
 		setTitle(Messages.getString("ConnectionDialog.Title") + " - " + Costants.APPLICATION_NAME);  //$NON-NLS-1$
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 131);
+		setBounds(100, 100, 450, 183);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
