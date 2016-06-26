@@ -126,7 +126,9 @@
 	</issueManagement>
 	<scm>
 		<url>https://bitbucket.org/xspacesoft/ps3-customization.git</url>
-		<connection>scm:git@bitbucket.org:xspacesoft/ps3-customization.git</connection>
-		<developerConnection>scm:git@bitbucket.org:xspacesoft/ps3-customization.git</developerConnection>
+		<connection>scm:git:git@bitbucket.org:xspacesoft/ps3-customization.git</connection>
+		<developerConnection>scm:git:git@bitbucket.org:xspacesoft/ps3-customization.git</developerConnection>
 	</scm>
+	<name>PS3 Customization</name>
+	<url>https://bitbucket.org/xspacesoft/ps3-customization/</url>
 </project>
