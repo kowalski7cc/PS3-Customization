@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>PS3-Customization</groupId>
+	<artifactId>PS3-Customization</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<!-- Build with Java 7 -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<!-- Maven Build number Plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>useLastCommittedRevision</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Maven Shade Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<!-- Run shade goal on package phase -->
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<!-- add Main-Class to manifest file -->
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.xspacesoft.kowalski7cc.rtmmodding.Splash</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Windows exe wrapper -->
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>1.5.1</version>
+				<executions>
+					<execution>
+						<id>l4j-clui</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+						<configuration>
+							<headerType>gui</headerType>
+							<jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+							<outfile>${project.build.directory}/${project.artifactId}-${project.version}.exe</outfile>
+							<downloadUrl>http://java.com/download</downloadUrl>
+							<stayAlive>true|false</stayAlive>
+							<classPath>
+								<mainClass>com.xspacesoft.kowax.Main</mainClass>
+								<preCp>anything</preCp>
+							</classPath>
+							<singleInstance>
+								<mutexName>text</mutexName>
+								<windowTitle>text</windowTitle>
+							</singleInstance>
+							<icon>${basedir}/src/com/xspacesoft/kowalski7cc/rtmmodding/resources/9icon.ico</icon>
+							<jre>
+								<minVersion>1.7.0</minVersion>
+								<jdkPreference>preferJre</jdkPreference>
+								<runtimeBits>64/32</runtimeBits>
+							</jre>
+							<!-- Exe Metadata -->
+							<versionInfo>
+								<fileVersion>1.0.0.0</fileVersion>
+								<txtFileVersion>${project.version}</txtFileVersion>
+								<fileDescription>${project.name}</fileDescription>
+								<copyright>2016 XSpaceSoft Informatics</copyright>
+								<productVersion>1.0.0.0</productVersion>
+								<txtProductVersion>1.0.0.0</txtProductVersion>
+								<productName>${project.name}</productName>
+								<companyName>xspacesoft.com</companyName>
+								<internalName>XSpaceSoft Informatics</internalName>
+								<originalFilename>${project.artifactId}-${project.version}.exe</originalFilename>
+							</versionInfo>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	<organization>
+		<name>XSpaceSoft</name>
+	</organization>
+	<issueManagement>
+		<url>https://bitbucket.org/xspacesoft/ps3-customization/issues</url>
+		<system>Bitbucket Issues Management</system>
+	</issueManagement>
+	<scm>
+		<url>https://bitbucket.org/xspacesoft/ps3-customization.git</url>
+		<connection>scm:git@bitbucket.org:xspacesoft/ps3-customization.git</connection>
+		<developerConnection>scm:git@bitbucket.org:xspacesoft/ps3-customization.git</developerConnection>
+	</scm>
+</project>
