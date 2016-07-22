@@ -38,7 +38,7 @@ public class RtmDialog extends JFrame {
 	private static final long serialVersionUID = 2981607864076342362L;
 	private JPanel contentPane;
 	protected FTPClient ftp;
-	protected File data = new File(new File(System.getProperty("user.home")), "PS3 Customization");
+	protected File data = Costants.DATA_PATH;
 	private JList<String> listElements;
 	private JButton btnInstall;
 	private JLabel lblStatus;
