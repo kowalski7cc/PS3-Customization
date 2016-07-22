@@ -160,14 +160,15 @@ public class PerfectRecovery extends JFrame {
 	private void loadFile() {
 		load = new File(Costants.DATA_PATH, "PerfectRecovery.json");
 		if(!load.exists()) {
-			try {
-				load.createNewFile();
-			} catch (IOException e) {
-				if(Costants.DEBUG)
-					e.printStackTrace();
-			} finally {
-				error = true;
-			}
+//			try {
+//				load.createNewFile();
+//			} catch (IOException e) {
+//				if(Costants.DEBUG)
+//					e.printStackTrace();
+//			} finally {
+//				error = true;
+//			}
+			error=true;
 		}
 	}
 	
