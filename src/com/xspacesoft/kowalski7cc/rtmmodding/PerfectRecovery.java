@@ -158,7 +158,7 @@ public class PerfectRecovery extends JFrame {
 	}
 
 	private void loadFile() {
-		load = new File(new File("data"), "PerfectRecovery.json");
+		load = new File(Costants.DATA_PATH, "PerfectRecovery.json");
 		if(!load.exists()) {
 			try {
 				load.createNewFile();

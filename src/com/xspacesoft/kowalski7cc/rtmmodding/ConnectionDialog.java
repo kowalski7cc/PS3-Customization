@@ -60,7 +60,7 @@ public class ConnectionDialog extends JFrame {
 
 	private static void chackIntegrity() {
 		System.out.println("Checking data folder");
-		File file = new File(new File(System.getProperty("user.home")), "PS3 Customization");
+		File file = Costants.DATA_PATH;
 		if(!file.exists()) {
 			System.out.println(Messages.getString("ConnectionDialog.MissingFolderError")); //$NON-NLS-1$
 			if(!file.mkdir())

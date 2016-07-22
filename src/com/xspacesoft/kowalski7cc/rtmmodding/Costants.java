@@ -1,5 +1,6 @@
  package com.xspacesoft.kowalski7cc.rtmmodding;
 
+import java.io.File;
 import java.util.Map;
 
 public class Costants {
@@ -8,6 +9,7 @@ public class Costants {
 	public final static String APPLICATION_NAME = "PS3 Customization" + (DEBUG?" - Developer debug mode":"");
 	public final static String APPLICATION_DEVELOPER = "Kowalski7cc";
 	public final static String RECENT_CONNECTIONS_KEY = "recent_conns";
+	public final static File DATA_PATH = new File(new File(System.getProperty("user.home")), "PS3 Customization");
 	
 	public final static String[][] PAIR = new String[][] {
 		{ "Coldboots", "/nand/vsh/resource/" },
