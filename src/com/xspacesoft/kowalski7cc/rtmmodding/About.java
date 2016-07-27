@@ -51,7 +51,7 @@ public class About extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(About.class.getResource("/com/xspacesoft/kowalski7cc/rtmmodding/resources/LogoXSS_512.png"))); //$NON-NLS-1$
 		setTitle(Messages.getString("About.Title") + " - " + Costants.APPLICATION_NAME);
 		setResizable(false);
-		setBounds(100, 100, 401, 233);
+		setBounds(100, 100, 479, 256);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
