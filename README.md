@@ -14,6 +14,10 @@ This is a tool for making modded ps3 customizations easier
 Launch the application once, it will create a folder in your home ("c:\user\yourname\PS3 Customization" on windows)
 Put a folder with the name of the customization inside the correct customization type with the original file name.
 Example:
+
+```
+#!raw
+
 -PS3 Customization
 --Boot sounds
 ---Stock
@@ -25,6 +29,7 @@ Example:
 --Waves
 ---Stock
 ----lines.qrc
+```
 
 ## Common issues ##
 You must first disable WebMan's integrated FTP and use Rebug toolbox or MultiMan integrated FTP or it won't work
