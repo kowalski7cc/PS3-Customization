@@ -15,16 +15,16 @@ Launch the application once, it will create a folder in your home ("c:\user\your
 Put a folder with the name of the customization inside the correct customization type with the original file name.
 Example:
 * PS3 Customization
-** Boot sounds
-*** Stock
-**** coldboot_multi.ac3
-**** coldboot_stereo.ac3
-*** Classic
-**** coldboot_multi.ac3
-**** coldboot_stereo.ac3
-** Waves
-*** Stock
-**** lines.qrc
+* * Boot sounds
+* * * Stock
+* * * * coldboot_multi.ac3
+* * * * coldboot_stereo.ac3
+* * * Classic
+* * * * coldboot_multi.ac3
+* * * * coldboot_stereo.ac3
+* * Waves
+* * * Stock
+* * * * lines.qrc
 
 ## Common issues ##
 You must first disable WebMan's integrated FTP and use Rebug toolbox or MultiMan integrated FTP or it won't work
