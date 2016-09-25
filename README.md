@@ -16,7 +16,7 @@ Put a folder with the name of the customization inside the correct customization
 Example:
 
 ```
-#!raw
+#!text
 
 -PS3 Customization
 --Boot sounds
