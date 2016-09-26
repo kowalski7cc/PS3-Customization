@@ -43,16 +43,26 @@
 				</configuration>
 			</plugin>
 
-			<!-- Maven Build number Plugin -->
+			<!-- Maven Build number Plugin <plugin> <groupId>org.codehaus.mojo</groupId> 
+				<artifactId>buildnumber-maven-plugin</artifactId> <executions> <execution> 
+				<id>useLastCommittedRevision</id> <phase>validate</phase> <goals> <goal>create</goal> 
+				</goals> </execution> </executions> </plugin> -->
+
+			<!-- Maven Appbundle builder for OSX -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>
+				<groupId>sh.tak.appbundler</groupId>
+				<artifactId>appbundle-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<configuration>
+					<mainClass>com.xspacesoft.kowalski7cc.rtmmodding.ConnectionDialog</mainClass>
+					<icon>src/com/xspacesoft/kowalski7cc/rtmmodding/resources/icon.icns</icon>
+					<generateDiskImageFile>true</generateDiskImageFile>
+				</configuration>
 				<executions>
 					<execution>
-						<id>useLastCommittedRevision</id>
-						<phase>validate</phase>
+						<phase>package</phase>
 						<goals>
-							<goal>create</goal>
+							<goal>bundle</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -127,7 +137,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 	<organization>

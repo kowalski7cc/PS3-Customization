@@ -38,17 +38,22 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
+        <groupId>sh.tak.appbundler</groupId>
+        <artifactId>appbundle-maven-plugin</artifactId>
+        <version>1.1.1</version>
         <executions>
           <execution>
-            <id>useLastCommittedRevision</id>
-            <phase>validate</phase>
+            <phase>package</phase>
             <goals>
-              <goal>create</goal>
+              <goal>bundle</goal>
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <mainClass>com.xspacesoft.kowalski7cc.rtmmodding.ConnectionDialog</mainClass>
+          <icon>src/com/xspacesoft/kowalski7cc/rtmmodding/resources/icon.icns</icon>
+          <generateDiskImageFile>true</generateDiskImageFile>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
