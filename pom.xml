@@ -57,7 +57,7 @@
 				<configuration>
 					<mainClass>com.xspacesoft.kowalski7cc.rtmmodding.ConnectionDialog</mainClass>
 					<icon>PS3_Custom.icns</icon>
-					<generateDiskImageFile>true</generateDiskImageFile>
+					<!-- <generateDiskImageFile>true</generateDiskImageFile> -->
 				</configuration>
 				<executions>
 					<execution>
