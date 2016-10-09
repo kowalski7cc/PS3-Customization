@@ -10,5 +10,5 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - mvn --version
           - mvn generate-sources
-          - mvn test
           - mvn install
+          - mvn test
