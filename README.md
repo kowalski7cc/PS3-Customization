@@ -39,7 +39,10 @@ You must first disable WebMan's integrated FTP and use Rebug toolbox or MultiMan
 Coming soon
 
 ## License ##
+
 ```
+#!text
+
     Copyright (C) 2016  Kowalski7cc
 
     This program is free software: you can redistribute it and/or modify
@@ -54,4 +57,4 @@ Coming soon
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-	```
+```
