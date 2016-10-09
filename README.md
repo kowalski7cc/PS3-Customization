@@ -1,5 +1,6 @@
 # PS3 Customizations #
-![PS3_Customization-01.png](https://bitbucket.org/repo/LzBMnK/images/3272281403-PS3_Customization-01.png)
+![PS3 Customization logo](https://bitbucket.org/repo/LzBMnK/images/3272281403-PS3_Customization-01.png)
+![Gnu GPL v3 logo](https://www.gnu.org/graphics/gplv3-127x51.png)
 This is a tool for making modded ps3 customizations easier
 
 ## Features ##

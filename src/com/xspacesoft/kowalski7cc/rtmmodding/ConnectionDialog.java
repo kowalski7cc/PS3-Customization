@@ -1,3 +1,18 @@
+/*This file is part of PS3 Customization.
+
+PS3 Customization is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+PS3 Customization is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with PS3 Customization.  If not, see <http://www.gnu.org/licenses/>.*/
+
 package com.xspacesoft.kowalski7cc.rtmmodding;
 
 import it.sauronsoftware.ftp4j.FTPAbortedException;
@@ -39,11 +54,21 @@ public class ConnectionDialog extends JFrame {
 //	private JPanel panel_1;
 //	private JLabel lblConnessioniRecenti;
 //	private JList list;
+	
+	private static String[] gplNotice = {
+			"PS3 Customization  Copyright (C) 2016  Kowalski7cc",
+			"This program comes with ABSOLUTELY NO WARRANTY.",
+			"This is free software, and you are welcome to redistribute it",
+			"under certain conditions. http://www.gnu.org/licenses/"
+	};
+	
+	
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		printGPLNotice();
 		chackIntegrity();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,7 +83,18 @@ public class ConnectionDialog extends JFrame {
 		});
 	}
 
+	/**
+	 * Print GNU GPL v3 notice
+	 */
+	private static void printGPLNotice() {
+		for(String s:gplNotice) {
+			System.out.println(s);
+		}
+		System.out.println();
+	}
+
 	private static void chackIntegrity() {
+		
 		System.out.println("Checking data folder");
 		File file = Costants.DATA_PATH;
 		if(!file.exists()) {
@@ -191,4 +227,5 @@ public class ConnectionDialog extends JFrame {
 	protected JLabel getLblErroreImpossibileEffettuare() {
 		return lblConnectError;
 	}
+	
 }
