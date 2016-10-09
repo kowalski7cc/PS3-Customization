@@ -40,7 +40,6 @@ Coming soon
 
 ## License ##
 ```
-#!text
     Copyright (C) 2016  Kowalski7cc
 
     This program is free software: you can redistribute it and/or modify
