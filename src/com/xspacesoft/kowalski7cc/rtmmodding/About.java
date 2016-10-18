@@ -15,7 +15,6 @@ along with PS3 Customization.  If not, see <http://www.gnu.org/licenses/>.*/
 
 package com.xspacesoft.kowalski7cc.rtmmodding;
 
-import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;

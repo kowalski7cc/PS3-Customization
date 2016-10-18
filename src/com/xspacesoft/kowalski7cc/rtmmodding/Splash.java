@@ -17,10 +17,7 @@ package com.xspacesoft.kowalski7cc.rtmmodding;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.util.Calendar;
 
 import javax.swing.ImageIcon;
@@ -91,6 +88,7 @@ public class Splash extends JWindow {
 		contentPane.add(lblOther, BorderLayout.NORTH);
 	}
 	
+	@SuppressWarnings("unused")
 	private void fadeIn() {
 		while(fade<1) {
 			fade = fade + 0.05f;
@@ -105,6 +103,7 @@ public class Splash extends JWindow {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void fadeOut() {
 		while(fade>0) {
 			fade = fade - 0.1f;
