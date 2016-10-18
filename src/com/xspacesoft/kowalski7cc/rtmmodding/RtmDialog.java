@@ -57,6 +57,7 @@ public class RtmDialog extends JFrame {
 	private JList<String> listElements;
 	private JButton btnInstall;
 	private JLabel lblStatus;
+	private JButton btnAllStock;
 
 	/**
 	 * Launch the application.
@@ -90,10 +91,10 @@ public class RtmDialog extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				ConnectionDialog.class.getResource(
 						"/com/xspacesoft/kowalski7cc/rtmmodding/resources/" + Utils.getIconSystem() + ".png")));  //$NON-NLS-1$
-		setTitle((ftp.isConnected()?ftp.getHost():"Disconnescted") + " - " + Costants.APPLICATION_NAME);
+		setTitle(((ftp!=null)&&(!ftp.isConnected())?ftp.getHost():"Disconnescted") + " - " + Costants.APPLICATION_NAME);
 		this.ftp = ftp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 605, 433);
+		setBounds(100, 100, 915, 525);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(5, 0));
@@ -145,10 +146,11 @@ public class RtmDialog extends JFrame {
 		listElements.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(listElements.getSelectedIndex()>-1) {
-					if(ftp.isConnected())
+					if((ftp!=null)&&(ftp.isConnected())) {
 						btnInstall.setEnabled(true);
-					else
+					} else {
 						btnInstall.setEnabled(false);
+					}
 				}
 				if(Costants.DEBUG)
 					System.out.println(listElements.getSelectedValue());
@@ -171,6 +173,7 @@ public class RtmDialog extends JFrame {
 				installComponent(listCustomizations.getSelectedValue(), listElements.getSelectedValue());
 			}
 		});
+
 		btnInstall.setEnabled(false);
 		GridBagConstraints gbc_btnInstall = new GridBagConstraints();
 		gbc_btnInstall.fill = GridBagConstraints.HORIZONTAL;
@@ -180,14 +183,15 @@ public class RtmDialog extends JFrame {
 		gbc_btnInstall.gridy = 0;
 		panel_1.add(btnInstall, gbc_btnInstall);
 
-		JButton btnAllStock = new JButton(Messages.getString("RtmDialog.Stock"));
-		if(!ftp.isConnected())
+		btnAllStock = new JButton(Messages.getString("RtmDialog.Stock"));
+		if((ftp==null)||(!ftp.isConnected()))
 			btnAllStock.setEnabled(false);
-		btnAllStock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runStockInstall();
-			}
-		});
+		else
+			btnAllStock.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					runStockInstall();
+				}
+			});
 		GridBagConstraints gbc_btnAllStock = new GridBagConstraints();
 		gbc_btnAllStock.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAllStock.anchor = GridBagConstraints.NORTH;
@@ -197,12 +201,15 @@ public class RtmDialog extends JFrame {
 		panel_1.add(btnAllStock, gbc_btnAllStock);
 
 		JButton btnReboot = new JButton(Messages.getString("RebootAlert.Title"));
-		btnReboot.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RebootAlert.show(ftp.isConnected()?ftp.getHost():null);
-			}
-		});
-		
+		if((ftp==null)||(!ftp.isConnected()))
+			btnReboot.setEnabled(false);
+		else
+			btnReboot.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					RebootAlert.show(ftp.isConnected()?ftp.getHost():null);
+				}
+			});
+
 		JButton btnPerfectRecovery = new JButton(Messages.getString("PerfectRecovery.Title"));
 		btnPerfectRecovery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -215,16 +222,20 @@ public class RtmDialog extends JFrame {
 		gbc_btnPerfectRecovery.gridx = 0;
 		gbc_btnPerfectRecovery.gridy = 2;
 		panel_1.add(btnPerfectRecovery, gbc_btnPerfectRecovery);
-		
+
 		JButton btnSingstar = new JButton(Messages.getString("RemoveSingstar.Title")); //$NON-NLS-1$
 		btnSingstar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RemoveSingstar.show(ftp);
 			}
 		});
-		
-		JButton btnPsnComment = new JButton(Messages.getString("RtmDialog.PsnComment")); //$NON-NLS-1$
-		btnPsnComment.setEnabled(false);
+
+		JButton btnPsnComment = new JButton(Messages.getString("PSNTextEditor.this.title")); //$NON-NLS-1$
+		btnPsnComment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PSNTextEditor.main(ftp);
+			}
+		});
 		GridBagConstraints gbc_btnPsnComment = new GridBagConstraints();
 		gbc_btnPsnComment.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnPsnComment.insets = new Insets(0, 0, 5, 0);
@@ -246,7 +257,7 @@ public class RtmDialog extends JFrame {
 		panel_1.add(btnReboot, gbc_btnReboot);
 
 		JButton btnDisconnect = new JButton(
-				Messages.getString((ftp.isConnected()?"RtmDialog.Disconnect":"Window.Close")));
+				Messages.getString("Window.Close")); //$NON-NLS-1$
 		btnDisconnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -279,7 +290,7 @@ public class RtmDialog extends JFrame {
 		gbc_btnAbout.gridx = 0;
 		gbc_btnAbout.gridy = 7;
 		panel_1.add(btnAbout, gbc_btnAbout);
-		
+
 		if(Costants.MODS_SUPPORTED.length>0) {
 			listCustomizations.setSelectedIndex(0);
 		}
@@ -303,7 +314,7 @@ public class RtmDialog extends JFrame {
 				installComponent(job[i], "Stock");
 		}
 	}
-	
+
 	public void installComponent(String selectedValue, String selectedElement) {
 		String installDir = Costants.INSTALL_PATH.get(selectedValue);
 		if(installDir==null)
@@ -383,10 +394,11 @@ public class RtmDialog extends JFrame {
 	protected JButton getBtnInstall() {
 		return btnInstall;
 	}
+
 	protected JLabel getLblStatus() {
 		return lblStatus;
 	}
-	
+
 	protected void setWindowStatus(String status) {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
@@ -394,5 +406,9 @@ public class RtmDialog extends JFrame {
 				lblStatus.setText(status);
 			}
 		});
+	}
+
+	protected JButton getBtnAllStock() {
+		return btnAllStock;
 	}
 }

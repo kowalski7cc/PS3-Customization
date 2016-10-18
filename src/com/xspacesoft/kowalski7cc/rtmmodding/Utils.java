@@ -15,8 +15,12 @@ along with PS3 Customization.  If not, see <http://www.gnu.org/licenses/>.*/
 
 package com.xspacesoft.kowalski7cc.rtmmodding;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JWindow;
 
 public class Utils {
 	
@@ -40,5 +44,20 @@ public class Utils {
 		if(System.getProperty("os.name").equalsIgnoreCase("Windows 8.1"))
 			return "PS3_Custom_Win10";
 		return "PS3_Custom";
+	}
+	
+	public static void setWindowPosition(JWindow jWindow) {        
+		// get the size of the screen, on systems with multiple displays,		
+		// the primary display is used
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		// calculate the new location of the window
+		int w = jWindow.getSize().width;
+		int h = jWindow.getSize().height;
+		int x = (dim.width - w) / 2;
+		int y = (dim.height - h) / 2;
+		// moves this component to a new location, the top-left corner of
+		// the new location is specified by the x and y
+		// parameters in the coordinate space of this component's parent
+		jWindow.setLocation(x, y);
 	}
 }

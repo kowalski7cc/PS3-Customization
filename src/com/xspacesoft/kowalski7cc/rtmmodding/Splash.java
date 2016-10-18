@@ -38,25 +38,25 @@ public class Splash extends JWindow {
 	private JPanel contentPane;
 	protected float fade = 0.0f;
 	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		Splash frame = new Splash();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		frame.fadeIn();
-		ConnectionDialog.main(args);
-		frame.fadeOut();
-	}
+//
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		Splash frame = new Splash();
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//		frame.fadeIn();
+//
+//		frame.fadeOut();
+//	}
 
 	/**
 	 * Create the frame.
@@ -124,24 +124,11 @@ public class Splash extends JWindow {
 		if(b) {
 			setOpacity(0);
 			super.setVisible(b);
-			setWindowPosition(this);
+			Utils.setWindowPosition(this);
 		} else {
 			super.setVisible(b);
 		}
 	}
 	
-	private void setWindowPosition(JWindow jWindow) {        
-		// get the size of the screen, on systems with multiple displays,		
-		// the primary display is used
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		// calculate the new location of the window
-		int w = jWindow.getSize().width;
-		int h = jWindow.getSize().height;
-		int x = (dim.width - w) / 2;
-		int y = (dim.height - h) / 2;
-		// moves this component to a new location, the top-left corner of
-		// the new location is specified by the x and y
-		// parameters in the coordinate space of this component's parent
-		jWindow.setLocation(x, y);
-	}
+
 }
