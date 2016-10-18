@@ -9,6 +9,4 @@ pipelines:
     - step:
         script: # Modify the commands below to build your repository.
           - mvn --version
-          - mvn generate-sources
           - mvn install
-          - mvn test
