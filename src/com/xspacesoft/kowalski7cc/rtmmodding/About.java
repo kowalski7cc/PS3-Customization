@@ -15,9 +15,13 @@ along with PS3 Customization.  If not, see <http://www.gnu.org/licenses/>.*/
 
 package com.xspacesoft.kowalski7cc.rtmmodding;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +36,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
 
 public class About extends JFrame {
 
@@ -66,18 +69,29 @@ public class About extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(About.class.getResource("/com/xspacesoft/kowalski7cc/rtmmodding/resources/LogoXSS_512.png"))); //$NON-NLS-1$
 		setTitle(Messages.getString("About.Title") + " - " + Costants.APPLICATION_NAME);
 		setResizable(false);
-		setBounds(100, 100, 479, 256);
+		setBounds(100, 100, 689, 275);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{154, 154, 154, 0};
+		gbl_contentPane.rowHeights = new int[]{54, 0, 54, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel logo = new JLabel("");
 		logo.setIcon(new ImageIcon(About.class.getResource("/com/xspacesoft/kowalski7cc/rtmmodding/resources/Title_347x100.png")));
-		logo.setBounds(10, 11, 375, 109);
-		contentPane.add(logo);
+		GridBagConstraints gbc_logo = new GridBagConstraints();
+		gbc_logo.gridwidth = 3;
+		gbc_logo.fill = GridBagConstraints.VERTICAL;
+		gbc_logo.insets = new Insets(0, 0, 5, 0);
+		gbc_logo.gridx = 0;
+		gbc_logo.gridy = 0;
+		contentPane.add(logo, gbc_logo);
 		
 		JButton btnVisitOurSite = new JButton(Messages.getString("About.Site"));
+		btnVisitOurSite.setEnabled(false);
 		btnVisitOurSite.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -90,8 +104,12 @@ public class About extends JFrame {
 				}
 			}
 		});
-		btnVisitOurSite.setBounds(8, 170, 179, 23);
-		contentPane.add(btnVisitOurSite);
+		GridBagConstraints gbc_btnVisitOurSite = new GridBagConstraints();
+		gbc_btnVisitOurSite.fill = GridBagConstraints.BOTH;
+		gbc_btnVisitOurSite.insets = new Insets(0, 0, 5, 5);
+		gbc_btnVisitOurSite.gridx = 0;
+		gbc_btnVisitOurSite.gridy = 2;
+		contentPane.add(btnVisitOurSite, gbc_btnVisitOurSite);
 		
 		JButton btnClose = new JButton(Messages.getString("About.Close"));
 		btnClose.addActionListener(new ActionListener() {
@@ -99,19 +117,6 @@ public class About extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnClose.setBounds(296, 170, 89, 23);
-		contentPane.add(btnClose);
-		
-		JLabel lblDevelopedByKowalskicc = new JLabel(Messages.getString("About.Description") + " Kowalski7cc");
-		lblDevelopedByKowalskicc.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblDevelopedByKowalskicc.setBounds(10, 119, 355, 23);
-		contentPane.add(lblDevelopedByKowalskicc);
-		
-		JLabel lblInternalPreview = new JLabel(Messages.getString("About.lblInternalPreview.text")); //$NON-NLS-1$
-		lblInternalPreview.setVisible(Costants.DEBUG);
-		lblInternalPreview.setForeground(Color.ORANGE);
-		lblInternalPreview.setBounds(10, 145, 355, 14);
-		contentPane.add(lblInternalPreview);
 		
 		JButton btnEula = new JButton(Messages.getString("About.btnEula.text")); //$NON-NLS-1$
 		btnEula.addActionListener(new ActionListener() {
@@ -119,8 +124,27 @@ public class About extends JFrame {
 				Eula.start();
 			}
 		});
-		btnEula.setBounds(197, 170, 89, 23);
-		contentPane.add(btnEula);
+		GridBagConstraints gbc_btnEula = new GridBagConstraints();
+		gbc_btnEula.fill = GridBagConstraints.BOTH;
+		gbc_btnEula.insets = new Insets(0, 0, 5, 5);
+		gbc_btnEula.gridx = 1;
+		gbc_btnEula.gridy = 2;
+		contentPane.add(btnEula, gbc_btnEula);
+		GridBagConstraints gbc_btnClose = new GridBagConstraints();
+		gbc_btnClose.insets = new Insets(0, 0, 5, 0);
+		gbc_btnClose.fill = GridBagConstraints.BOTH;
+		gbc_btnClose.gridx = 2;
+		gbc_btnClose.gridy = 2;
+		contentPane.add(btnClose, gbc_btnClose);
+		
+		JLabel lblDevelopedByKowalskicc = new JLabel(Messages.getString("About.Description") + " Kowalski7cc");
+		lblDevelopedByKowalskicc.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		GridBagConstraints gbc_lblDevelopedByKowalskicc = new GridBagConstraints();
+		gbc_lblDevelopedByKowalskicc.gridwidth = 3;
+		gbc_lblDevelopedByKowalskicc.fill = GridBagConstraints.BOTH;
+		gbc_lblDevelopedByKowalskicc.gridx = 0;
+		gbc_lblDevelopedByKowalskicc.gridy = 3;
+		contentPane.add(lblDevelopedByKowalskicc, gbc_lblDevelopedByKowalskicc);
 	}
 	
 	public static void openWebpage(URI uri) {
