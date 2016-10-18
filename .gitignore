@@ -2,3 +2,4 @@
 /target/
 /bin/
 .settings/org.eclipse.jdt.ui.prefs
+dependency-reduced-pom.xml
