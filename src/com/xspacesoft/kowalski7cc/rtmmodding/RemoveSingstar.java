@@ -44,7 +44,7 @@ import javax.swing.border.EmptyBorder;
 public class RemoveSingstar extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 7927232510551673876L;
 	private JPanel contentPane;
@@ -70,7 +70,7 @@ public class RemoveSingstar extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @param ftp 
+	 * @param ftp
 	 */
 	public RemoveSingstar(FTPClient ftp) {
 		this.ftp=ftp;
@@ -78,7 +78,7 @@ public class RemoveSingstar extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				ConnectionDialog.class.getResource(
 						"/com/xspacesoft/kowalski7cc/rtmmodding/resources/" + Utils.getIconSystem() + ".png")));  //$NON-NLS-1$
-		setBounds(100, 100, 450, 121);
+		setBounds(100, 100, 532, 210);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,10 +87,10 @@ public class RemoveSingstar extends JFrame {
 		setMinimumSize(new Dimension(300, 120));
 		JLabel lblDescription = new JLabel(Messages.getString("RemoveSingstar.Description")); //$NON-NLS-1$
 		contentPane.add(lblDescription, BorderLayout.NORTH);
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
-		
+
 		JButton btnRun = new JButton(Messages.getString("RemoveSingstar.Run")); //$NON-NLS-1$
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -136,15 +136,14 @@ public class RemoveSingstar extends JFrame {
 					}
 					setVisible(false);
 				} catch (IllegalStateException | IOException
-						| FTPIllegalReplyException | FTPException | FTPDataTransferException 
+						| FTPIllegalReplyException | FTPException | FTPDataTransferException
 						| FTPAbortedException | FTPListParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 		panel.add(btnRun);
-		
+
 		JButton btnClose = new JButton(Messages.getString("Window.Close")); //$NON-NLS-1$
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,14 +151,14 @@ public class RemoveSingstar extends JFrame {
 			}
 		});
 		panel.add(btnClose);
-		
+
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		comboBox = new JComboBox<String>();
 		try {
-			if(ftp.isConnected()) {
+			if((ftp!=null)&&(ftp.isConnected())) {
 				while(!ftp.currentDirectory().equalsIgnoreCase("/")) {
 					ftp.changeDirectoryUp();
 					if(Costants.DEBUG)
@@ -197,7 +196,10 @@ public class RemoveSingstar extends JFrame {
 		} catch (IllegalStateException | IOException | FTPIllegalReplyException
 				| FTPException | FTPDataTransferException | FTPAbortedException | FTPListParseException e) {
 			btnRun.setEnabled(false);
-			comboBox.addItem(Messages.getString("RemoveSingstar.Error"));
+//			if((ftp==null)||(!ftp.isConnected()))
+//				comboBox.addItem(Messages.getString("RemoveSingstar.NotConnected"));
+//			else
+				comboBox.addItem(Messages.getString("RemoveSingstar.Error"));
 			if(Costants.DEBUG)
 				if(e.getMessage().contains("FTPConnection closed"))
 					System.out.println("FTP Connection closed");

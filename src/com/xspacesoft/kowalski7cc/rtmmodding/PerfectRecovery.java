@@ -81,7 +81,7 @@ public class PerfectRecovery extends JFrame {
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
 		JButton btnRun = new JButton(Messages.getString("PerfectRecovery.Run")); //$NON-NLS-1$
-		btnRun.setEnabled(ftp.isConnected());
+		btnRun.setEnabled((ftp!=null)&&(ftp.isConnected()));
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				installCustomization();
