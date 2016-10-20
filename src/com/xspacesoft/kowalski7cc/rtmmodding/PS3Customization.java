@@ -39,7 +39,7 @@ public class PS3Customization {
 	public static void main(String[] args) {
 		printGPLNotice();
 		chackIntegrity();
-		if (System.getProperty("debug").equalsIgnoreCase("true"))
+		if(System.getProperty("debug")!=null&&System.getProperty("debug").equalsIgnoreCase("true"))
 			LoggerManager.setUp(Level.ALL);
 		else
 			LoggerManager.setUp(Level.INFO);
@@ -51,7 +51,7 @@ public class PS3Customization {
 			// Not blocking
 		}
 		ftpClient = new FTPClient();
-		if (System.getProperty("offline").equalsIgnoreCase("true"))
+		if(System.getProperty("offline")!=null&&System.getProperty("offline").equalsIgnoreCase("true"))
 			RtmDialog.show(null);
 		else
 			showConnectionDialog(ftpClient);
