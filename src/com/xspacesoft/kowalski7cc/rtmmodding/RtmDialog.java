@@ -231,6 +231,8 @@ public class RtmDialog extends JFrame {
 		});
 
 		JButton btnPsnComment = new JButton(Messages.getString("PSNTextEditor.this.title")); //$NON-NLS-1$
+		if(!(System.getProperty("debug")!=null&&System.getProperty("debug").equalsIgnoreCase("true")))
+			btnPsnComment.setEnabled(false);
 		btnPsnComment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PSNTextEditor.main(ftp);
