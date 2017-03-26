@@ -60,7 +60,7 @@ public class PS3Customization {
 	/**
 	 * Start connection dialog for ip request
 	 * @param ftpClient
-	 * 
+	 *
 	 */
 	private static void showConnectionDialog(FTPClient ftpClient2) {
 		EventQueue.invokeLater(new Runnable() {
@@ -89,6 +89,7 @@ public class PS3Customization {
 	private static void chackIntegrity() {
 		LOGGER.fine("Checking data folder");
 		File file = Costants.DATA_PATH;
+		System.out.println("Searching in " + file.getAbsolutePath());
 		if(!file.exists()) {
 			LOGGER.fine(Messages.getString("ConnectionDialog.MissingFolderError")); //$NON-NLS-1$
 			if(!file.mkdir())

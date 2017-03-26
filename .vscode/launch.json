@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "PS3",
+        "type": "java",
+        "externalConsole": false,
+        "startupClass": "C:\\Users\\kowal\\Documents\\Git\\ps3-customization\\target\\PS3-Customization-1.0-SNAPSHOT.jar",
+        "options": [
+            "-jar"
+        ]
+    }]
+}
